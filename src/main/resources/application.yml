@@ -24,7 +24,7 @@ spring:
 #  port: 443
 
 document:
-  uploadPath: ~/data/doc/
+  uploadPath: ./data/doc/
 
 
 Admin:

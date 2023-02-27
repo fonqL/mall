@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -52,8 +53,8 @@ public class AdminController {
 	}
 
 	@PostMapping("/add")
-	public Object add(String name, int price, String info, Integer tagid,
-	                  MultipartFile file, HttpServletRequest request) {
+	public void add(String name, int price, String info, Integer tagid,
+	                MultipartFile file, HttpServletResponse response) throws IOException {
 		// String jwt = request.getHeader("Auth");
 		// if (jwt == null || jwt.isEmpty())
 		// 	return "请先登录"; //or throw?
@@ -61,7 +62,7 @@ public class AdminController {
 
 		String path = storageService.store(file);
 		goodMapper.insert(name, price, info, tagid == null ? 1 : tagid.intValue(), path);
-		return "ok";
+		response.sendRedirect("http://localhost:8080");
 	}
 
 	@PostMapping("/delete")
