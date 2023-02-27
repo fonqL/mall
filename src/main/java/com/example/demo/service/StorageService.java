@@ -38,7 +38,7 @@ public class StorageService {
 				Files.copy(inputStream, destinationFile,
 						StandardCopyOption.REPLACE_EXISTING);
 			}
-			return destpath;
+			return destinationFile.toString();
 		} catch (IOException e) {
 			throw new RuntimeException("Failed to store file.", e);
 		}

@@ -62,7 +62,7 @@ public class AdminController {
 
 		String path = storageService.store(file);
 		goodMapper.insert(name, price, info, tagid == null ? 1 : tagid.intValue(), path);
-		response.sendRedirect("http://localhost:8080");
+		response.sendRedirect("http://175.178.103.84:8080");
 	}
 
 	@PostMapping("/delete")

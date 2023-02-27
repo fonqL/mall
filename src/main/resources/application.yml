@@ -3,8 +3,8 @@ spring:
     static-path-pattern: /** #配置静态资源访问的url前缀。
   datasource:
     url: jdbc:mysql://localhost:3306/shop
-    username: root
-    password: c2h5oh
+    username: shop
+    password: 12345678
     driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:

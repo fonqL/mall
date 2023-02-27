@@ -2,7 +2,7 @@ target/
 .mvn/
 !**/src/main/**/target/
 !**/src/test/**/target/
-
+data/
 
 ### STS ###
 .apt_generated
