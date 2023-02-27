@@ -1,0 +1,40 @@
+spring:
+  mvc:
+    static-path-pattern: /** #配置静态资源访问的url前缀。
+  datasource:
+    url: jdbc:mysql://localhost:3306/shop
+    username: root
+    password: c2h5oh
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+#  web:
+#    resources:
+#      static-locations: 配置物理上的静态资源路径 很少用
+
+#server:
+#  ssl:
+#    key-store: classpath:https.keystore
+#    key-alias: testhttps
+#    key-store-password: asdfasdf
+#    key-store-type: JKS
+#    enabled: true
+#  port: 443
+
+document:
+  uploadPath: ~/data/doc/
+
+
+Admin:
+  pswd: "1234"
+
+jwt:
+  key: "secretkey"
+  header: "Authorization"     # token 返回头部
+  secret: "qwertyuiop1214156" # 私钥
+  expireTime: 6000000
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/mapper.xml

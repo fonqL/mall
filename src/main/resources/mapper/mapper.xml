@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.GoodMapper">
+    <select id="summaries" resultType="com.example.demo.entity.GoodSummary">
+        select good.id as id, good.name as name, price, tagid, tag.name as tagname
+        from good,
+             tag
+        where good.tagid = tag.id
+        limit #{off}, #{len}
+    </select>
+    <select id="detail" resultType="com.example.demo.entity.GoodDetail">
+        select good.id as id, good.name as name, price, info, tagid, tag.name as tagname
+        from good,
+             tag
+        where good.id = #{id}
+          and good.tagid = tag.id
+    </select>
+    <select id="content" resultType="com.example.demo.entity.Good">
+        select *
+        from good
+        where id = #{id}
+    </select>
+    <delete id="delete">
+        delete
+        from good
+        where id = #{id}
+    </delete>
+    <insert id="insert">
+        insert into good
+        values (NULL, #{name}, #{price}, #{info}, #{tagid}, #{filepath})
+    </insert>
+    <update id="update">
+        update good
+        set
+        <if test="name!=null">
+            name = #{name},
+        </if>
+        <if test="price!=null">
+            price = #{price},
+        </if>
+        <if test="info!=null">
+            info = #{info},
+        </if>
+        <if test="tagid!=null">
+            tagid = #{tagid},
+        </if>
+        <if test="filepath!=null">
+            filepath = #{filepath},
+        </if>
+        where id = #{id}
+    </update>
+    <select id="list" resultType="com.example.demo.entity.GoodDetail">
+        select good.id as id, good.name as name, price, info, tagid, tag.name as tagname
+        from good,
+             tag
+        where good.tagid = tag.id
+        limit #{off}, #{len}
+    </select>
+</mapper>
